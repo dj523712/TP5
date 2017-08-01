@@ -9,13 +9,17 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+use think\Route;
+//hello模块
+Route::rule('hello','Demo/index/index');
+
+//web前段模块
+Route::rule('web/:id','web/index/show');
+
 return [
     '__pattern__' => [
         'name' => '\w+',
+        'id' => '\d+',
     ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
-
 ];
+
