@@ -4,11 +4,10 @@ return [
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
-
-    // 应用命名空间
-    'app_namespace'          => 'app',
+    // 默认Host地址
+    'app_host'               => '',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
@@ -75,6 +74,8 @@ return [
     'pathinfo_fetch'         => ['ORIG_PATH_INFO', 'REDIRECT_PATH_INFO', 'REDIRECT_URL'],
     // pathinfo分隔符
     'pathinfo_depr'          => '/',
+    // HTTPS代理标识
+    'https_agent_name'       => '',
     // URL伪静态后缀
     'url_html_suffix'        => 'html',
     // URL普通方式参数 用于自动生成
@@ -138,7 +139,7 @@ return [
     // 视图输出字符串内容替换
     'view_replace_str'       => [],
     // 默认跳转页面对应的模板文件
-    'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl' ,
+    'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
 
     // +----------------------------------------------------------------------
@@ -154,6 +155,8 @@ return [
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
+    // 是否记录trace信息到日志
+    'record_trace'           => false,
 
     // +----------------------------------------------------------------------
     // | 日志设置
