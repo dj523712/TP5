@@ -9,11 +9,6 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-$request = \think\Request::instance();
-define('MODULE_NAME', $request->module());
-define('CONTROLLER_NAME', $request->controller());
-define('ACTION_NAME', $request->action());
-
 
 define('THINK_VERSION', '5.0.10');
 define('THINK_START_TIME', microtime(true));
