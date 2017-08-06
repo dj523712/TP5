@@ -95,7 +95,6 @@ void main() {
         context.fillStyle = gradient;
         context.fillRect(0, 0, canvas.width, canvas.height);
 
-        console.log(canvas.toDataURL('image/png'));
         container.style.background = 'url(' + canvas.toDataURL('image/png') + ')';
         container.style.backgroundSize = '32px 100%';
 
@@ -108,9 +107,8 @@ void main() {
 
         geometry = new THREE.Geometry();
 
-        var image = <?php echo STATIC_PATH . 'images\cloud10.png'?>;
 
-        var texture = THREE.ImageUtils.loadTexture(image, null, animate);
+        var texture = THREE.ImageUtils.loadTexture('/static/assets/images/cloud10.png', null, animate);
         texture.magFilter = THREE.LinearMipMapLinearFilter;
         texture.minFilter = THREE.LinearMipMapLinearFilter;
 
