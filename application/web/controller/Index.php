@@ -1,7 +1,11 @@
 <?php
 namespace app\web\controller;
 
+use app\web\model\Visitors;
+use DeviceDetector\DeviceDetector;
 use think\Controller;
+use think\Model;
+use think\View;
 
 class Index extends Controller
 {
@@ -17,6 +21,9 @@ class Index extends Controller
 
     public function show($id)
     {
-        return $this->fetch('show'. $id);
+        $visitor = new Visitors();
+        $visitor->visit();
+        $view = new View();
+        return $view->fetch('show' . $id);
     }
 }
