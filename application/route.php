@@ -16,6 +16,9 @@ Route::rule('hello','Demo/index/index');
 //web前段模块
 Route::rule('web/:id','web/index/show');
 
+//web前段模块
+Route::rule('web/:id','web/index/show');
+
 return [
     '__pattern__' => [
         'name' => '\w+',
