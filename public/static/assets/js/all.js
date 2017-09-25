@@ -2752,15 +2752,16 @@ $(function() {
   var windowHalfY = window.innerHeight / 2;
   var particles = [];
   var particleImage = new Image();
-  particleImage.src = "../static/assets/images/Mazz.png";
-  var snowNum = 200;
+  particleImage.src = "/static/assets/images/Mazz.png";
+  var snowNum = 99;
 
-  function init() {
+  function startSnow() {
+    canvas1 = document.getElementById("myCanvas");
     camera = new MAZZ.PerspectiveCamera(75, containerWidth / containerHeight, 1, 10000);
     camera.position.z = 1000;
     scene = new MAZZ.Scene();
     scene.add(camera);
-    renderer = new MAZZ.CanvasRenderer();
+    renderer = new MAZZ.CanvasRenderer(canvas1);
     renderer.setSize(containerWidth, containerHeight);
     var material = new MAZZ.ParticleBasicMaterial({
       map: new MAZZ.Texture(particleImage)
@@ -2769,11 +2770,19 @@ $(function() {
       particle = new Particle3D(material);
       particle.position.x = Math.random() * 2000;
       particle.position.y = Math.random() * 2000;
-      particle.position.z = Math.random() * 2000-1000;
+      particle.position.z = Math.random() * 2000 - 1000;
       particle.scale.x = particle.scale.y = 1;
       scene.add(particle);
       particles.push(particle)
     }
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.zIndex = 11;
+    renderer.domElement.style.height = canvas1.height;
+    renderer.domElement.style.left = 0;
+    
+    canvas1.style.position = 'fixed';
+    canvas1.style.left = 0;
+    
     container.appendChild(renderer.domElement);
     document.addEventListener("mousemove", onDocumentMouseMove, false);
     document.addEventListener("touchstart", onDocumentTouchStart, false);
@@ -2831,5 +2840,5 @@ $(function() {
     camera.lookAt(scene.position);
     renderer.render(scene, camera)
   }
-  init()
+  window.onload = startSnow()
 });

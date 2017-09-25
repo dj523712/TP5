@@ -15,21 +15,15 @@ init();
 
 function init() {
 
-  var $container = $('<div class="snow-container"/>');
-  var container = $container[0];
-  $('body').append($container);
+  container = document.createElement('div');
+  container.className = 'snow-container';
+  document.body.appendChild(container);
 
-  var $canvas = $('<canvas/>');
-  var canvas1 = $canvas[0];
-  $canvas.attr({
-    width: 32,
-    height: window.innerHeight,
-    id: 'mycanvas'
-  });
-  $canvas.addClass('myCanvas');
-  $container.append($canvas);
-  console.log($container);
-  console.log($canvas);
+  // Bg gradient
+
+  var canvas1 = document.createElement('canvas');
+  canvas1.width = 32;
+  canvas1.height = window.innerHeight;
 
   var context = canvas1.getContext('2d');
 
@@ -42,6 +36,7 @@ function init() {
 
   container.style.background = 'url(' + canvas1.toDataURL('image/png') + ')';
   container.style.backgroundSize = '32px 100%';
+//container.style.position = 'fixed';
 
   //
 
@@ -112,6 +107,8 @@ function init() {
   renderer = new THREE.WebGLRenderer({
     antialias: false
   });
+  renderer.domElement.id = 'myCanvas';
+  renderer.domElement.style.zIndex = -1;
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
