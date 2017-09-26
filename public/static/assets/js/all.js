@@ -2753,7 +2753,7 @@ $(function() {
   var particles = [];
   var particleImage = new Image();
   particleImage.src = "/static/assets/images/Mazz.png";
-  var snowNum = 99;
+  var snowNum = 23;
 
   function startSnow() {
     canvas1 = document.getElementById("myCanvas");
