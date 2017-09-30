@@ -15,8 +15,7 @@
         password: '', //  密码
         login () {
           if (this.username !== '' && this.password !== '') {
-            console.log(1111)
-            this.$router.go('http://www.baidu.com')
+            this.$router.push({path: '/main'})
           } else {
             alert('账号或密码不能为空！')// 我们判断下账号密码是否为空
           }
