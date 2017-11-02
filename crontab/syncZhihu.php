@@ -6,11 +6,10 @@
  * Time: 15:54
  */
 use app\index\model\ZhihuTopics;
-use GuzzleHttp\Client;
 
 const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
 
-$client = new Client();
+$client = new \GuzzleHttp\Client();
 $response = $client->request('GET', 'https://www.zhihu.com/topics', [
     'verify' => false
 ]);
