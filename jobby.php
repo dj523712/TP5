@@ -9,6 +9,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 defined('LOGS_PATH') || define('LOGS_PATH', __DIR__ . '/logs/jobby');
+date_default_timezone_set('Asia/Shanghai');
 
 $jobby = new \Jobby\Jobby();
 
