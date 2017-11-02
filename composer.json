@@ -26,7 +26,8 @@
         "psr/http-message": "^1.0",
         "piwik/device-detector": "^3.8",
         "symfony/debug": "^3.3",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "hellogerard/jobby": "^3.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
