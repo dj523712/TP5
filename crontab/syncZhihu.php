@@ -5,11 +5,14 @@
  * Date: 2017/11/1
  * Time: 15:54
  */
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use app\index\model\ZhihuTopics;
+use GuzzleHttp\Client;
 
 const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
 
-$client = new \GuzzleHttp\Client();
+$client = new Client();
 $response = $client->request('GET', 'https://www.zhihu.com/topics', [
     'verify' => false
 ]);
