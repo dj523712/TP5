@@ -7,10 +7,10 @@
  */
 define('ROOT' , '/var/www/TP5');
 require_once(ROOT . '/vendor/autoload.php');
-require_once(ROOT . '/application/index/model/ZhihuTopics.php');
+require_once(ROOT . '/thinkphp/library/think/App.php');
+$config = file_get_contents(ROOT . '/application/database.php');
 
-use GuzzleHttp\Client;
-
+\think\App::run();
 const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
 
 $client = new Client();
