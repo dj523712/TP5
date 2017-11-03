@@ -8,7 +8,7 @@
 define('ROOT' , '/var/www/TP5');
 require_once(ROOT . '/vendor/autoload.php');
 require_once(ROOT . '/thinkphp/library/think/App.php');
-require_once(ROOT . '/think.php');
+require_once(ROOT . '/think');
 
 \think\App::run();
 const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
