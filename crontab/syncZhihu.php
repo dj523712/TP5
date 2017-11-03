@@ -5,8 +5,9 @@
  * Date: 2017/11/1
  * Time: 15:54
  */
-define('ROOT' , '/var/www/TP5/');
-require_once(ROOT . 'application/index/model/ZhihuTopics.php');
+define('ROOT' , '/var/www/TP5');
+require_once(ROOT . '/vender/autoload.php');
+require_once(ROOT . '/application/index/model/ZhihuTopics.php');
 
 use GuzzleHttp\Client;
 
