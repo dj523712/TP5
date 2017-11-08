@@ -5,7 +5,7 @@
  * Date: 2017/11/8
  * Time: 10:49
  */
-namespace app\demo\controller;
+namespace app\backend\controller;
 
 use app\backend\model\ZhihuTopics;
 use GuzzleHttp\Client;
