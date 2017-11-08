@@ -5,7 +5,7 @@
  * Date: 2017/10/26
  * Time: 15:40
  */
-namespace app\index\model;
+namespace app\backend\model;
 
 use think\Model;
 
