@@ -15,7 +15,7 @@ $jobby = new \Jobby\Jobby();
 
 $jobby->add('CommandExample', array(
     'command' => 'curl http://www.darkcastle.life/backend/sync_zhihu/syncTopics',
-    'schedule' => '*/3 * * * *',
+    'schedule' => '0 */7 * * *',
     'output' => LOGS_PATH .'/syncZhihu.log',
     'enabled' => true,
 ));
