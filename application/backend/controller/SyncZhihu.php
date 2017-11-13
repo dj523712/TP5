@@ -39,7 +39,7 @@ class SyncZhihu
         $subTopicArray = [];
         foreach ($topicCat[1] as $topicId) {
             $subTopicArray[$topicId] = [];
-            $response = $client->request('POST', $this::GET_TOPIC_URL, [
+            $response = $client->request('POST', self::GET_TOPIC_URL, [
                 'verify' => false,
                 'multipart' => [
                     [
