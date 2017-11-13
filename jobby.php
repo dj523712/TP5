@@ -14,7 +14,7 @@ date_default_timezone_set('Asia/Shanghai');
 $jobby = new \Jobby\Jobby();
 
 $jobby->add('CommandExample', array(
-    'command' => 'curl http://www.darkcastle.life/index.php/backend/Synczhihu/syncTopics',
+    'command' => 'curl http://www.darkcastle.life/index.php/backend/sync_zhihu/syncTopics',
     'schedule' => '*/3 * * * *',
     'output' => LOGS_PATH .'/syncZhihu.log',
     'enabled' => true,

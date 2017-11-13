@@ -12,8 +12,12 @@ use GuzzleHttp\Client;
 
 class SyncZhihu
 {
+    const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
+
+
     public function syncTopics()
     {
+        set_time_limit(0);
         $client = new Client();
         $response = $client->request('GET', 'https://www.zhihu.com/topics', ['verify' => false]);
         $content = (string)$response->getBody();
@@ -35,7 +39,7 @@ class SyncZhihu
         $subTopicArray = [];
         foreach ($topicCat[1] as $topicId) {
             $subTopicArray[$topicId] = [];
-            $response = $client->request('POST', GET_TOPIC_URL, [
+            $response = $client->request('POST', $this::GET_TOPIC_URL, [
                 'verify' => false,
                 'multipart' => [
                     [

@@ -7,6 +7,7 @@
  */
 namespace app\backend\model;
 
+use think\Log;
 use think\Model;
 
 class ZhihuTopics extends Model
@@ -18,21 +19,24 @@ class ZhihuTopics extends Model
 
     protected $createTime = 'create_time';
     protected $updateTime = '';
-
-    protected static function init()
-    {
-        ZhihuTopics::beforeInsert(function ($topic) {
-            if ($oddTopic = ZhihuTopics::get(['raw_id' => $topic->raw_id])) {
-                if (isset($topic->parent_id)) {
-                    if ($oddTopic->name != $topic->name) {
-                        ZhihuTopics::update(['status' => 0], ['id' => $oddTopic->id]);
-                    } elseif ($oddTopic->parent_id == $topic->parent_id) {
-                        return false;
-                    }
-                } elseif ($oddTopic->name == $topic->name) {
-                    return false;
-                }
-            }
-        });
-    }
+//
+//    protected static function init()
+//    {
+//        ZhihuTopics::beforeInsert(function ($topic) {
+//            if ($oddTopic = isset($topic->parent_id) ? ZhihuTopics::get(['raw_id' => $topic->raw_id, 'parent_id' => $topic->parent_id, 'status' => 1]) :
+//                ZhihuTopics::get(['raw_id' => $topic->raw_id, 'status' => 1])) {
+//                if ($oddTopic->name == $topic->name) {
+//                    if ($oddTopic->parent_id == 0) {
+//                        return false;
+//                    } elseif ($oddTopic->parent_id == $topic->parent_id) {
+//                        return false;
+//                    } else {
+//                        Log::error($topic);
+//                    }
+//                } else {
+//                    ZhihuTopics::update(['status' => 0], ['id' => $oddTopic->id]);
+//                }
+//            }
+//        });
+//    }
 }
