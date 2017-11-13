@@ -19,24 +19,24 @@ class ZhihuTopics extends Model
 
     protected $createTime = 'create_time';
     protected $updateTime = '';
-//
-//    protected static function init()
-//    {
-//        ZhihuTopics::beforeInsert(function ($topic) {
-//            if ($oddTopic = isset($topic->parent_id) ? ZhihuTopics::get(['raw_id' => $topic->raw_id, 'parent_id' => $topic->parent_id, 'status' => 1]) :
-//                ZhihuTopics::get(['raw_id' => $topic->raw_id, 'status' => 1])) {
-//                if ($oddTopic->name == $topic->name) {
-//                    if ($oddTopic->parent_id == 0) {
-//                        return false;
-//                    } elseif ($oddTopic->parent_id == $topic->parent_id) {
-//                        return false;
-//                    } else {
-//                        Log::error($topic);
-//                    }
-//                } else {
-//                    ZhihuTopics::update(['status' => 0], ['id' => $oddTopic->id]);
-//                }
-//            }
-//        });
-//    }
+
+    protected static function init()
+    {
+        ZhihuTopics::beforeInsert(function ($topic) {
+            if ($oddTopic = isset($topic->parent_id) ? ZhihuTopics::get(['raw_id' => $topic->raw_id, 'parent_id' => $topic->parent_id, 'status' => 1]) :
+                ZhihuTopics::get(['raw_id' => $topic->raw_id, 'status' => 1])) {
+                if ($oddTopic->name == $topic->name) {
+                    if ($oddTopic->parent_id == 0) {
+                        return false;
+                    } elseif ($oddTopic->parent_id == $topic->parent_id) {
+                        return false;
+                    } else {
+                        Log::error($topic);
+                    }
+                } else {
+                    ZhihuTopics::update(['status' => 0], ['id' => $oddTopic->id]);
+                }
+            }
+        });
+    }
 }
