@@ -29,7 +29,7 @@ class Think
         // 模板起始路径
         'view_path'   => '',
         // 模板文件后缀
-        'view_suffix' => 'php',
+        'view_suffix' => 'html',
         // 模板文件名分隔符
         'view_depr'   => DS,
         // 是否开启模板编译缓存,设为false则每次都会重新编译
