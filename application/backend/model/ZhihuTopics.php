@@ -30,8 +30,6 @@ class ZhihuTopics extends Model
                         return false;
                     } elseif ($oddTopic->parent_id == $topic->parent_id) {
                         return false;
-                    } else {
-                        Log::error($topic);
                     }
                 } else {
                     ZhihuTopics::update(['status' => 0], ['id' => $oddTopic->id]);

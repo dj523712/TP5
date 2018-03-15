@@ -12,7 +12,10 @@ use GuzzleHttp\Client;
 
 class SyncZhihu
 {
+    //二级分类菜单接口
     const GET_TOPIC_URL = 'https://www.zhihu.com/node/TopicsPlazzaListV2';
+    //分类下热门文章
+    const GET_HOT_ARTICLE = 'https://www.zhihu.com/topic/{$id}/hot';
 
 
     public function syncTopics()
@@ -72,6 +75,33 @@ class SyncZhihu
         }
         //存储次顶分类
         $topic->saveAll($subLists);
+    }
+
+
+
+    public function syncHotArticles()
+    {
+        set_time_limit(0);
+        $client = new Client();
+        $subTopics = ZhihuTopics::all(function($query) {
+            $query->where('parent_id', '<>', 0)->where('status', 1)->distinct('raw_id');
+        }, '', true);
+        foreach ($subTopics as $subTopic) {
+            $url = $this->escapeString(self::GET_HOT_ARTICLE,['id' => $subTopic->raw_id]);
+            $response = $client->request('GET', $url, ['verify' => false]);
+            dump($url);
+            print_r((string)$response->getBody());exit;
+        }
+
+
+
+    }
+
+    protected function escapeString($string, array $parameters = [])
+    {
+        return preg_replace_callback("#\{\\$(\w+)\}#", function($matches) use  ($parameters){
+            return isset($parameters[$matches[1]]) ? $parameters[$matches[1]] : '';
+        }, $string);
     }
 }
 ?>
